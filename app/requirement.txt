@@ -1,0 +1,5 @@
+- The Pokemon interface should account for pokemon attacks and evolutions as described by the schema definitions.x
+- A search input component that searches the pokemon api by name. This component should also read the state of a search query param.
+- A result component that displays all of information about the searched pokemon or a not found view.
+- The pokemon result should also contain that attacks and evolutions of that pokemon.
+- Clicking on the name of an evolution should update the search query param in the url and show the result of the evolution.

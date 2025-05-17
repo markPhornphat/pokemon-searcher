@@ -1,14 +1,13 @@
-import Link from "next/link";
 import React from "react";
 import SearchBar from "./components/searchBar";
+import PokemonResult from "./components/pokemonResult";
 
 const Home = () => {
-  const pokemonName = "Babursur";
   return (
-    <div>
+    <div className="min-h-screen gap-2 bg-gradient-to-b from-blue-100 to-blue-300 p-6 flex flex-col items-center">
+      <h1 className="text-4xl font-bold mb-6">Pokémon Search</h1>
       <SearchBar />
-
-      <Link href={`/products/${pokemonName}`}>Go to pokemon</Link>
+      <PokemonResult />
     </div>
   );
 };

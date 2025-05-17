@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const GET_POKEMON = gql`
   query GetPokemon($name: String) {
@@ -16,44 +17,33 @@ const GET_POKEMON = gql`
 `;
 
 const SearchBar = () => {
-  const [name, setName] = useState<string>("");
-  const [searchName, setSearchName] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pokemonName = searchParams.get("pokemon") || "";
+  const [search, setSearch] = useState<string>(pokemonName || "");
 
-  const { data, loading, error } = useQuery(GET_POKEMON, {
-    variables: { name: searchName },
-    skip: !searchName, // only run when searchName is set
-  });
-
-  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSearchName(name);
+    if (search) {
+      router.push(`/?pokemon=${search}`);
+    }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-300 p-6 flex flex-col items-center">
-      <h1 className="text-4xl font-bold mb-6">Pokémon Search</h1>
-      <form onSubmit={handleSearch} className="flex gap-2 mb-6">
+    <div>
+      <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
         <Input
           placeholder="Enter Pokémon name"
-          value={name}
+          value={search}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
+            setSearch(e.target.value)
           }
           className="w-64"
         />
-        <Button type="submit" className="hover:pointer">
+        <Button type="submit" className="hover:cursor-pointer">
           Search
         </Button>
       </form>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error loading Pokémon.</p>}
-      {data?.pokemon && (
-        <div>
-          <h2>{data.pokemon.name}</h2>
-          <img src={data.pokemon.image} alt={data.pokemon.name} />
-          <p>Types: {data.pokemon.types.join(", ")}</p>
-        </div>
-      )}
     </div>
   );
 };
