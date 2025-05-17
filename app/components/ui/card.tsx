@@ -30,8 +30,8 @@ const Card = ({ props }: { props: pokemonType }) => {
   }
 
   return (
-    <div className="bg-white w-60 h-auto rounded-md flex flex-col justify-center items-center px-5 py-5 gap-5">
-      {/* Upper */}
+    <div className="bg-white w-60 h-full rounded-md flex flex-col gap-5 items-center px-5 py-5 shadow-md hover:animate-bounce hover:cursor-pointer">
+      {/* Top */}
       <div className="flex justify-between items-center w-full">
         <h1 className="text-xl font-extrabold">{props.name}</h1>
         <div
@@ -48,39 +48,45 @@ const Card = ({ props }: { props: pokemonType }) => {
           src={props.image}
           alt={`pokemon_${props.name}`}
           fill
+          // width={500}
+          // height={500}
           className="object-cover rounded"
-          //   sizes="176px"
+          sizes="176px"
           priority
         />
       </div>
       {/* Body */}
-      <div className="flex flex-col gap-2 bg-gray-200 rounded-sm h-auto p-2 w-full">
+      <div className="flex-1 flex flex-col gap-2 rounded-sm p-2 w-full">
         {/* TYPES */}
-        <div className="flex gap-0.5 items-center">
-          <h2 className="font-bold">Types:&nbsp;</h2>
-          {props.types.map((type) => (
-            <div
-              key={`${props.name}_${type}`}
-              className={`flex justify-center items-center text-xs px-2 text-white font-bold py-1 rounded-2xl w-auto ${
-                COLOR_MAP[type.toLowerCase()]
-              }`}
-            >
-              {type}
-            </div>
-          ))}
+        <div className="flex flex-col gap-2">
+          <h2 className="font-semibold">Types:&nbsp;</h2>
+          <div className="flex gap-1">
+            {props.types.map((type) => (
+              <div
+                key={`${props.name}_${type}`}
+                className={`flex justify-center items-center text-sm px-3 py-1 text-white font-semibold rounded-2xl w-auto ${
+                  COLOR_MAP[type.toLowerCase()]
+                }`}
+              >
+                {type}
+              </div>
+            ))}
+          </div>
         </div>
         {/* EVOLVE */}
-        <div>
-          <h2 className="font-bold">Evolutions:</h2>
-          <div className="pl-4 flex flex-col gap-2">
+        <div className="w-auto">
+          <h2 className="font-semibold mb-2">Evolutions:</h2>
+          <div className=" flex flex-col gap-2">
             {props.evolutions ? (
-              props.evolutions.map((evo) => (
+              props.evolutions.map((evo, index) => (
                 <div
-                  className="bg-slate-400 text-white font-bold px-2 py-1 rounded-full w-auto hover:cursor-auto"
+                  className={`text-white font-bold px-3 py-1 rounded-full self-start hover:cursor-pointer hover:opacity-70 active:bg-slate-500 ${
+                    COLOR_MAP[evo.types?.[0]?.toLowerCase()] || "bg-slate-100"
+                  }`}
                   key={evo.id}
-                  // onClick={handleClick(evo.name)}
+                  onClick={() => handleClick(evo.name)}
                 >
-                  {evo.name}
+                  {`${index + 1}. ${evo.name}`}
                 </div>
               ))
             ) : (

@@ -18,6 +18,7 @@ const GET_ALL_POKEMON = gql`
       evolutions {
         id
         name
+        types
       }
       classification
       types

@@ -22,6 +22,10 @@ const SearchBar = () => {
   const pokemonName = searchParams.get("pokemon") || "";
   const [search, setSearch] = useState<string>(pokemonName || "");
 
+  useEffect(() => {
+    setSearch(pokemonName);
+  }, [pokemonName]);
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (search) {
