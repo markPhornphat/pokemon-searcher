@@ -46,19 +46,21 @@ const PokemonResult = () => {
     }
   }, [allPokemon, selectedPokemon]);
 
+  //Handle loading
   if (isLoading)
     if (pokemonName) {
       return <CardSkeleton />;
     } else {
       return (
         <div className="grid grid-cols-3 gap-6 auto-rows-fr">
-          {Array.from({ length: 9 }).map((_) => (
-            <CardSkeleton />
+          {Array.from({ length: 9 }).map((_, index) => (
+            <CardSkeleton key={index} />
           ))}
         </div>
       );
     }
 
+  //Handle not found
   if (pokemonName) {
     if (errorOne || !selectedPokemon) {
       return (
