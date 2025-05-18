@@ -3,6 +3,7 @@ export function Button({ className = "", ...props }) {
     <button
       className={`w-10 h-10 rounded-full relative overflow-hidden border-[3px] border-black shadow-lg ${className}`}
       {...props}
+      data-testid="search-button"
       aria-label="Search"
       title="Search Pokémon"
     >
