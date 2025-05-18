@@ -72,9 +72,11 @@ const PokemonResult = () => {
             height={120}
             className="opacity-50"
           />
-          <h2 className="mt-4 text-2xl font-bold">Pokémon not found</h2>
+          <h2 className="mt-4 text-2xl font-bold">
+            Pokémon&nbsp;not&nbsp;found
+          </h2>
           <p className="text-sm mt-2 text-gray-500">
-            Try searching for another Pokémon name.
+            Try&nbsp;searching&nbsp;for&nbsp;another&nbsp;Pokémon&nbsp;name.
           </p>
         </div>
       );
@@ -83,7 +85,7 @@ const PokemonResult = () => {
 
   return (
     <div
-      className={`sm:block sm:space-y-5 lg:grid gap-6  ${
+      className={`block space-y-5 xl:grid xl:space-y-0 gap-6  ${
         data.length === 1 ? "grid-cols-1 place-items-center" : `grid-cols-3`
       }`}
     >
