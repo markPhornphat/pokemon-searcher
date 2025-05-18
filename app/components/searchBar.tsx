@@ -26,7 +26,10 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit} className="flex gap-2 mb-6 items-center">
         {pokemonName ? (
           <button
-            onClick={() => router.back()}
+            onClick={() => {
+              setSearch("");
+              router.replace("/");
+            }}
             className="flex items-center gap-2 text-gray-700 hover:text-black bg-gray-100 rounded-full p-1 hover:cursor-pointer "
           >
             <svg
