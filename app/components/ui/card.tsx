@@ -61,7 +61,7 @@ const Card = ({ props }: { props: pokemonType }) => {
         </div>
 
         {/* Types */}
-        <div>
+        <div className="my-1">
           <h3 className="font-semibold mb-1">Types:</h3>
           <div className="flex gap-2 flex-wrap pl-2">
             {props.types.map((type) => (
@@ -79,7 +79,7 @@ const Card = ({ props }: { props: pokemonType }) => {
 
         {/* Evolutions */}
         <div className="h-1/6">
-          <h3 className="font-semibold mb-1">Evolutions:</h3>
+          <h3 className="font-semibold">Evolutions:</h3>
           <div className="flex flex-col gap-2 pl-2">
             {props.evolutions?.length > 0 ? (
               props.evolutions.map((evo, index) => (
