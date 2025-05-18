@@ -2,8 +2,10 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { usePokemon } from "../hooks/usePokemon";
+import Image from "next/image";
 import { useAllPokemon } from "../hooks/useAllPokemon";
 import Card from "./ui/card";
+import CardSkeleton from "./cardSkeleton";
 
 const PokemonResult = () => {
   const searchParams = useSearchParams();
@@ -44,7 +46,18 @@ const PokemonResult = () => {
     }
   }, [allPokemon, selectedPokemon]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="grid grid-cols-3 gap-6 auto-rows-fr">
+        {Array.from({ length: 9 }).map((_) => (
+          <CardSkeleton />
+        ))}
+      </div>
+      // <div className="flex-1 flex flex-col justify-center items-center gap-1 ">
+      //   <Image alt="loading" width={40} height={40} src={"/loading.svg"} />
+      //   Loading...
+      // </div>
+    );
   //   if (pokemonName) {
   //     if (error || !pokemon) {
   //       return <div>Not found</div>;

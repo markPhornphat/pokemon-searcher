@@ -26,6 +26,22 @@ type pokemonType = {
       image: string;
     }
   ];
+  attacks: {
+    fast: [
+      {
+        name: string;
+        type: string;
+        damage: number;
+      }
+    ];
+    special: [
+      {
+        name: string;
+        type: string;
+        damage: number;
+      }
+    ];
+  };
   classification: string;
   types: [string];
   resistant: [string];

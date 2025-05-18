@@ -20,6 +20,18 @@ const GET_ALL_POKEMON = gql`
         name
         types
       }
+      attacks {
+        fast {
+          name
+          type
+          damage
+        }
+        special {
+          name
+          type
+          damage
+        }
+      }
       classification
       types
       resistant

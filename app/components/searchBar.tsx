@@ -1,20 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
-
-const GET_POKEMON = gql`
-  query GetPokemon($name: String) {
-    pokemon(name: $name) {
-      name
-      image
-      number
-      types
-    }
-  }
-`;
 
 const SearchBar = () => {
   const router = useRouter();
@@ -38,10 +26,9 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit} className="flex gap-2 mb-6 items-center">
         {pokemonName ? (
           <button
-            onClick={() => router.push(`/`)}
+            onClick={() => router.back()}
             className="flex items-center gap-2 text-gray-700 hover:text-black bg-gray-100 rounded-full p-1 hover:cursor-pointer "
           >
-            {/* SVG from image style */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -67,7 +54,10 @@ const SearchBar = () => {
           }
           className="w-64"
         />
-        <Button type="submit" className="hover:cursor-pointer">
+        <Button
+          type="submit"
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-100"
+        >
           Search
         </Button>
       </form>
