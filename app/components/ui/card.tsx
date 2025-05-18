@@ -79,7 +79,7 @@ const Card = ({ props }: { props: pokemonType }) => {
               <button
                 key={evo.id || evo.name}
                 onClick={() => handleClick(evo.name)}
-                className={`text-white font-bold px-3 py-1 rounded-full text-left transition-all hover:opacity-80 active:scale-95 ${
+                className={`text-white font-bold px-3 py-1 rounded-full text-left transition-all hover:opacity-80 active:scale-95 hover:cursor-pointer ${
                   COLOR_MAP[evo.types?.[0]?.toLowerCase()] || "bg-slate-400"
                 }`}
               >
