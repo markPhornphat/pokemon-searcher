@@ -83,7 +83,7 @@ const PokemonResult = () => {
 
   return (
     <div
-      className={`grid gap-6 auto-rows-fr ${
+      className={`sm:block sm:space-y-5 lg:grid gap-6  ${
         data.length === 1 ? "grid-cols-1 place-items-center" : `grid-cols-3`
       }`}
     >

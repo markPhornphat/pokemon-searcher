@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ApolloProvider } from "@apollo/client";
-import client from "./lib/apolloClient";
+import { Quicksand } from "next/font/google";
 import ApolloWrapper from "./ApolloWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const quicksand = Quicksand({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "700"], // add weights you plan to use
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -28,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/pikachu.ico" sizes="any" />
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${quicksand.className} antialiased`}
         suppressHydrationWarning
       >
         <ApolloWrapper>{children}</ApolloWrapper>

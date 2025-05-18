@@ -26,6 +26,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit} className="flex gap-2 mb-6 items-center">
         {pokemonName ? (
           <button
+            title="Search Pokémon"
             onClick={() => {
               setSearch("");
               router.replace("/");
@@ -55,11 +56,11 @@ const SearchBar = () => {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setSearch(e.target.value)
           }
-          className="w-64"
+          className="w-80"
         />
         <Button
           type="submit"
-          className="hover:cursor-pointer hover:opacity-70 active:opacity-100"
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-100 hover:shadow-[0_0_10px_rgba(0,0,0,0.2)]"
         >
           Search
         </Button>
