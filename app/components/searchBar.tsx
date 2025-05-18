@@ -56,7 +56,7 @@ const SearchBar = () => {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setSearch(e.target.value)
           }
-          className="w-80"
+          className="w-80 font-bold"
         />
         <Button
           type="submit"

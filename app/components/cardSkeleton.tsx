@@ -1,40 +1,59 @@
 const CardSkeleton = () => {
   return (
-    <div className="bg-white rounded-xl shadow-md w-full max-w-xs flex flex-col p-5 gap-4 animate-pulse">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div className="h-6 w-24 bg-gray-200 rounded" />
-        <div className="h-6 w-10 bg-gray-300 rounded-full" />
-      </div>
+    <div
+      className="block xs:my-3 md:flex p-5 gap-10 w-full
+                 bg-white rounded-xl shadow-md animate-pulse"
+    >
+      {/* LEFT BOX */}
+      <div className="flex-1 space-y-4">
+        {/* Header */}
+        <div className="flex justify-between items-center">
+          <div className="h-6 bg-gray-300 rounded w-1/3" />
+          <div className="h-6 bg-gray-300 rounded w-12" />
+        </div>
 
-      {/* Image */}
-      <div className="w-44 h-44 bg-gray-200 rounded mx-auto" />
+        {/* Image */}
+        <div className="relative w-44 h-44 mx-auto bg-gray-300 rounded" />
 
-      {/* Types */}
-      <div>
-        <div className="h-5 w-20 bg-gray-200 rounded mb-2" />
-        <div className="flex gap-2">
-          <div className="h-6 w-16 bg-gray-200 rounded-2xl" />
-          <div className="h-6 w-16 bg-gray-300 rounded-2xl" />
+        {/* Types */}
+        <div>
+          <div className="h-5 bg-gray-300 rounded w-24 mb-2" />
+          <div className="flex gap-2">
+            <div className="h-6 w-16 rounded-full bg-gray-300" />
+            <div className="h-6 w-16 rounded-full bg-gray-300" />
+          </div>
+        </div>
+
+        {/* Evolutions */}
+        <div>
+          <div className="h-5 bg-gray-300 rounded w-24 mb-2" />
+          <div className="flex flex-col gap-2">
+            <div className="h-8 bg-gray-300 rounded-full w-40" />
+            <div className="h-8 bg-gray-300 rounded-full w-32" />
+          </div>
         </div>
       </div>
 
-      {/* Evolutions */}
-      <div>
-        <div className="h-5 w-24 bg-gray-200 rounded mb-2" />
-        <div className="space-y-2">
-          <div className="h-6 w-28 bg-gray-300 rounded-full" />
-          <div className="h-6 w-28 bg-gray-200 rounded-full" />
-        </div>
-      </div>
+      {/* RIGHT BOX */}
+      <div className="flex-1 space-y-4">
+        {/* Attacks */}
+        <div>
+          <div className="h-5 bg-gray-300 rounded w-24 mb-2" />
+          <div className="ml-3 space-y-2">
+            {/* Fast */}
+            <div className="h-5 bg-gray-300 rounded w-16" />
+            <div className="grid grid-cols-2 gap-2">
+              <div className="h-20 bg-gray-300 rounded" />
+              <div className="h-20 bg-gray-300 rounded" />
+            </div>
 
-      {/* Stats */}
-      <div>
-        <div className="h-5 w-20 bg-gray-200 rounded mb-2" />
-        <div className="space-y-1">
-          <div className="h-4 w-32 bg-gray-200 rounded" />
-          <div className="h-4 w-36 bg-gray-300 rounded" />
-          <div className="h-4 w-40 bg-gray-200 rounded" />
+            {/* Special */}
+            <div className="h-5 bg-gray-300 rounded w-20 mt-4" />
+            <div className="grid grid-cols-2 gap-2">
+              <div className="h-20 bg-gray-300 rounded" />
+              <div className="h-20 bg-gray-300 rounded" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
