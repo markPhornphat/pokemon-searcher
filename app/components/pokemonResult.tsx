@@ -52,7 +52,11 @@ const PokemonResult = () => {
   //   }
 
   return (
-    <div className="grid grid-cols-3 gap-6 auto-rows-fr">
+    <div
+      className={`grid gap-6 auto-rows-fr ${
+        data.length === 1 ? "grid-cols-1 place-items-center" : "grid-cols-3"
+      }`}
+    >
       {data.map((p: pokemonType) => (
         <Card key={p.id} props={p} />
       ))}
