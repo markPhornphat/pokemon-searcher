@@ -47,22 +47,37 @@ const PokemonResult = () => {
   }, [allPokemon, selectedPokemon]);
 
   if (isLoading)
-    return (
-      <div className="grid grid-cols-3 gap-6 auto-rows-fr">
-        {Array.from({ length: 9 }).map((_) => (
-          <CardSkeleton />
-        ))}
-      </div>
-      // <div className="flex-1 flex flex-col justify-center items-center gap-1 ">
-      //   <Image alt="loading" width={40} height={40} src={"/loading.svg"} />
-      //   Loading...
-      // </div>
-    );
-  //   if (pokemonName) {
-  //     if (error || !pokemon) {
-  //       return <div>Not found</div>;
-  //     }
-  //   }
+    if (pokemonName) {
+      return <CardSkeleton />;
+    } else {
+      return (
+        <div className="grid grid-cols-3 gap-6 auto-rows-fr">
+          {Array.from({ length: 9 }).map((_) => (
+            <CardSkeleton />
+          ))}
+        </div>
+      );
+    }
+
+  if (pokemonName) {
+    if (errorOne || !selectedPokemon) {
+      return (
+        <div className="flex flex-col items-center justify-center py-20 text-center text-gray-600">
+          <Image
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png"
+            alt="Pokemon not found"
+            width={120}
+            height={120}
+            className="opacity-50"
+          />
+          <h2 className="mt-4 text-2xl font-bold">Pokémon not found</h2>
+          <p className="text-sm mt-2 text-gray-500">
+            Try searching for another Pokémon name.
+          </p>
+        </div>
+      );
+    }
+  }
 
   return (
     <div
