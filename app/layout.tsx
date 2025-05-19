@@ -12,6 +12,9 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
   title: "Pokemon finder",
   description: "For searching the pokemon with description",
+  icons: {
+    icon: "/pikachu.ico",
+  },
 };
 
 export default function RootLayout({
@@ -21,8 +24,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/pikachu.ico" sizes="any" />
-
       <body
         className={`${quicksand.className} antialiased`}
         suppressHydrationWarning

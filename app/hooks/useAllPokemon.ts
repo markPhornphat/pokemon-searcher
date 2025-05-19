@@ -7,14 +7,6 @@ const GET_ALL_POKEMON = gql`
       id
       number
       name
-      weight {
-        minimum
-        maximum
-      }
-      height {
-        minimum
-        maximum
-      }
       evolutions {
         id
         name
@@ -32,13 +24,7 @@ const GET_ALL_POKEMON = gql`
           damage
         }
       }
-      classification
       types
-      resistant
-      weaknesses
-      fleeRate
-      maxCP
-      maxHP
       image
     }
   }
