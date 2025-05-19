@@ -11,6 +11,7 @@ import SearchBar from "./components/searchBar";
 import PokemonResult from "./components/pokemonResult";
 import Card from "./components/ui/card";
 import fetch from "cross-fetch";
+import client from "./lib/apolloClient";
 global.fetch = fetch; //Allow ApolloClient to fetch
 
 // Mock the App Router Hooks
@@ -23,21 +24,16 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-//Mocking the calling graphQL
-const client = new ApolloClient({
-  uri: "https://graphql-pokemon2.vercel.app/",
-  cache: new InMemoryCache(),
-});
-
 function renderWithApollo(ui: React.ReactElement) {
   return render(<ApolloProvider client={client}>{ui}</ApolloProvider>);
 }
 
+//Clean up mounted DOM every executing test done
 afterEach(() => {
   cleanup();
 });
 
-describe("Search component", () => {
+describe("Test rendering of component", () => {
   beforeEach(() => {
     render(<SearchBar />);
   });
